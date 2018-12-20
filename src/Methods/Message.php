@@ -396,6 +396,41 @@ trait Message
         return new MessageObject($response->getDecodedBody());
     }
 
+
+    /**
+     * Send a group of photos or videos as an album
+     *
+     * <code>
+     * $params = [
+     *   'chat_id'              => '',
+     *   'media'                => '',
+     *   'disable_notification' => '',
+     *   'reply_to_message_id'  => '',
+     * ];
+     * </code>
+     *
+     * @link https://core.telegram.org/bots/api#sendMediaGroup
+     *
+     * @param array          $params               [
+     *
+     * @var int|string       $chat_id              Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @var string           $media                Required. A JSON-serialized array describing photos and videos to be sent, must include 2–10 items
+     * @var bool             $disable_notification Optional. Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound.
+     * @var int              $reply_to_message_id  Optional. If the message is a reply, ID of the original message
+     *
+     * ]
+     *
+     * @throws TelegramSDKException
+     *
+     * @return MessageObject
+     */
+    public function sendMediaGroup(array $params): MessageObject
+    {
+        $response = $this->post('sendMediaGroup', $params);
+
+        return new MessageObject($response->getDecodedBody());
+    }
+
     /**
      * Send a group of photos or videos as an album.
      *
